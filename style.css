@@ -16,6 +16,40 @@ header {
   text-align: center;
 }
 
+#mainWrap {
+  display: flex;
+  flex-direction: column;
+}
+
+#gameboard {
+  width: 350px;
+  height: 350px;
+}
+
+#gameboard > div {
+  border: solid black 1.2px;
+}
+#gameboard > div:nth-child(1),
+#gameboard > div:nth-child(2),
+#gameboard > div:nth-child(3) {
+  border-top: dotted grey;
+}
+#gameboard > div:nth-child(7),
+#gameboard > div:nth-child(8),
+#gameboard > div:nth-child(9) {
+  border-bottom: dotted grey;
+}
+#gameboard > div:nth-child(1),
+#gameboard > div:nth-child(4),
+#gameboard > div:nth-child(7) {
+  border-left: dotted grey;
+}
+#gameboard > div:nth-child(3),
+#gameboard > div:nth-child(6),
+#gameboard > div:nth-child(9) {
+  border-right: dotted grey;
+}
+
 footer  {
   display: flex;
   text-align: center;
