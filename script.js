@@ -15,10 +15,6 @@ const Gameboard = (() => {
     let cell = document.createElement('div');
     cell.className = 'cell';
     gameboard.append(cell);
-    cell.addEventListener('click', () => {
-      cell.textContent = "X";
-      cell.style.cssText = 'color: red';
-    });
   }
   gameboard.style.gridTemplateColumns = `repeat(3, 100px)`;
   gameboard.style.gridAutoRows = `minmax(100px, auto)`;
@@ -27,3 +23,11 @@ const Gameboard = (() => {
   return { gameboardArr };
 
 })();
+
+document.querySelectorAll(".cell").forEach(item => {
+  item.addEventListener('click', () => {
+    item.textContent = "X";
+    item.style.cssText = 'color: red';
+    console.log('hello')
+  })
+})
