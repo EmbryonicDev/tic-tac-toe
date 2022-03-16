@@ -20,8 +20,10 @@ const Gameboard = (() => {
       cell.style.cssText = 'color: red';
     });
   }
-  
-  return { gameboardArr };
+  gameboard.style.gridTemplateColumns = `repeat(3, 100px)`;
+  gameboard.style.gridAutoRows = `minmax(100px, auto)`;
+  gameboard.style.display = 'grid';
 
+  return { gameboardArr };
 
 })();
