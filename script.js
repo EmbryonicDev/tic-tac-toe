@@ -45,21 +45,24 @@ const playGame = (() => {
             item.textContent = xMove;
             item.style.cssText = 'color: red';
             tempArr[cellId] = xMove;
-            moveTracker++;
-            getWinner();
           } else if (moveTracker % 2 != 0 && item.classList != 'cell noPlay') {
             item.textContent = oMove;
             item.style.cssText = 'color: blue';
             tempArr[cellId] = oMove;
-            getWinner();
-            moveTracker++;
           }
+          cellHelper();
           Gameboard.moveTracker = moveTracker;
           Gameboard.gameboardArr = tempArr
         }
       })
     })
   })()
+
+  const cellHelper = () => {
+    moveTracker++
+    getWinner()
+  }
+
   // Determine winner
   const getWinner = () => {
     if (
