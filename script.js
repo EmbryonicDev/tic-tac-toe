@@ -28,31 +28,62 @@ const Gameboard = (() => {
 })();
 
 const playGame = (() => {
-
-  // Draw X / O on board & fill gameBoardArr
-  document.querySelectorAll(".cell").forEach(item => {
-    item.addEventListener('click', () => {
-      let xMove = "X";
-      let oMove = "O";
-      let tempArr = Gameboard.gameboardArr;
-      let tempMoveTracker = Gameboard.moveTracker;
-      let cellId = item.getAttribute('data-set');
+  let xMove = "X";
+  let oMove = "O";
+  let tempArr = Gameboard.gameboardArr;
+  let moveTracker = Gameboard.moveTracker;
   
-      if (item.textContent == '') {
-        if (tempMoveTracker == 0 || tempMoveTracker % 2 == 0) {
-          item.textContent = xMove;
-          item.style.cssText = 'color: red';
-          tempArr[cellId] = xMove;
-          tempMoveTracker++;
-        } else if (tempMoveTracker % 2 != 0) {
-          item.textContent = oMove;
-          item.style.cssText = 'color: blue';
-          tempArr[cellId] = oMove;
-          tempMoveTracker++;
+  // EventListener on cells
+  const cellListener = (() => {
+    document.querySelectorAll(".cell").forEach(item => {
+      item.addEventListener('click', () => {
+        let cellId = item.getAttribute('data-set');
+
+        // Draw on cells
+        if (item.textContent == '' && item.classList != 'cell noPlay') {
+          if (moveTracker == 0 || moveTracker % 2 == 0) {
+            item.textContent = xMove;
+            item.style.cssText = 'color: red';
+            tempArr[cellId] = xMove;
+            moveTracker++;
+            getWinner();
+          } else if (moveTracker % 2 != 0 && item.classList != 'cell noPlay') {
+            item.textContent = oMove;
+            item.style.cssText = 'color: blue';
+            tempArr[cellId] = oMove;
+            getWinner();
+            moveTracker++;
+          }
+          Gameboard.moveTracker = moveTracker;
+          Gameboard.gameboardArr = tempArr
         }
-        Gameboard.moveTracker = tempMoveTracker;
-        Gameboard.gameboardArr = tempArr
-      }
+      })
     })
-  })
+  })()
+  // Determine winner
+  const getWinner = () => {
+    if (
+      tempArr[0] == xMove && tempArr[1] == xMove && tempArr[2] == xMove ||
+      tempArr[3] == xMove && tempArr[4] == xMove && tempArr[5] == xMove ||
+      tempArr[6] == xMove && tempArr[7] == xMove && tempArr[8] == xMove ||
+      tempArr[0] == xMove && tempArr[3] == xMove && tempArr[6] == xMove ||
+      tempArr[1] == xMove && tempArr[4] == xMove && tempArr[7] == xMove ||
+      tempArr[2] == xMove && tempArr[5] == xMove && tempArr[8] == xMove ||
+      tempArr[0] == xMove && tempArr[4] == xMove && tempArr[8] == xMove ||
+      tempArr[2] == xMove && tempArr[4] == xMove && tempArr[6] == xMove
+    ) {
+      console.log("We have a winner: " + "X");
+    } else if (
+      tempArr[0] == oMove && tempArr[1] == oMove && tempArr[2] == oMove ||
+      tempArr[3] == oMove && tempArr[4] == oMove && tempArr[5] == oMove ||
+      tempArr[6] == oMove && tempArr[7] == oMove && tempArr[8] == oMove ||
+      tempArr[0] == oMove && tempArr[3] == oMove && tempArr[6] == oMove ||
+      tempArr[1] == oMove && tempArr[4] == oMove && tempArr[7] == oMove ||
+      tempArr[2] == oMove && tempArr[5] == oMove && tempArr[8] == oMove ||
+      tempArr[0] == oMove && tempArr[4] == oMove && tempArr[8] == oMove ||
+      tempArr[2] == oMove && tempArr[4] == oMove && tempArr[6] == oMove
+    ) {
+      console.log("We have a winner: " + "O");
+    }
+  }
 })();
