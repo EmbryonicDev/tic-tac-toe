@@ -76,6 +76,7 @@ const playGame = (() => {
       tempArr[2] == xMove && tempArr[4] == xMove && tempArr[6] == xMove
     ) {
       console.log("We have a winner: " + "X");
+      stopNextMove();
     } else if (
       tempArr[0] == oMove && tempArr[1] == oMove && tempArr[2] == oMove ||
       tempArr[3] == oMove && tempArr[4] == oMove && tempArr[5] == oMove ||
@@ -87,6 +88,13 @@ const playGame = (() => {
       tempArr[2] == oMove && tempArr[4] == oMove && tempArr[6] == oMove
     ) {
       console.log("We have a winner: " + "O");
+      stopNextMove();
     }
+  }
+
+  const stopNextMove = () => {
+    document.querySelectorAll('.cell').forEach(item => {
+      item.classList.add('noPlay');
+    })
   }
 })();
