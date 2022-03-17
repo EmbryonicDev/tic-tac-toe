@@ -24,7 +24,6 @@ const Gameboard = (() => {
   let moveTracker = 0;
 
   return { gameboardArr, moveTracker };
-
 })();
 
 const playGame = (() => {
