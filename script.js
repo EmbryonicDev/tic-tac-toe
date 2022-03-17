@@ -31,7 +31,7 @@ const playGame = (() => {
   let oMove = "O";
   let tempArr = Gameboard.gameboardArr;
   let moveTracker = Gameboard.moveTracker;
-  
+
   // EventListener on cells
   const cellListener = (() => {
     document.querySelectorAll(".cell").forEach(item => {
@@ -64,30 +64,17 @@ const playGame = (() => {
 
   // Determine winner
   const getWinner = () => {
-    if (
-      tempArr[0] == xMove && tempArr[1] == xMove && tempArr[2] == xMove ||
-      tempArr[3] == xMove && tempArr[4] == xMove && tempArr[5] == xMove ||
-      tempArr[6] == xMove && tempArr[7] == xMove && tempArr[8] == xMove ||
-      tempArr[0] == xMove && tempArr[3] == xMove && tempArr[6] == xMove ||
-      tempArr[1] == xMove && tempArr[4] == xMove && tempArr[7] == xMove ||
-      tempArr[2] == xMove && tempArr[5] == xMove && tempArr[8] == xMove ||
-      tempArr[0] == xMove && tempArr[4] == xMove && tempArr[8] == xMove ||
-      tempArr[2] == xMove && tempArr[4] == xMove && tempArr[6] == xMove
-    ) {
-      console.log("We have a winner: " + "X");
-      stopNextMove();
-    } else if (
-      tempArr[0] == oMove && tempArr[1] == oMove && tempArr[2] == oMove ||
-      tempArr[3] == oMove && tempArr[4] == oMove && tempArr[5] == oMove ||
-      tempArr[6] == oMove && tempArr[7] == oMove && tempArr[8] == oMove ||
-      tempArr[0] == oMove && tempArr[3] == oMove && tempArr[6] == oMove ||
-      tempArr[1] == oMove && tempArr[4] == oMove && tempArr[7] == oMove ||
-      tempArr[2] == oMove && tempArr[5] == oMove && tempArr[8] == oMove ||
-      tempArr[0] == oMove && tempArr[4] == oMove && tempArr[8] == oMove ||
-      tempArr[2] == oMove && tempArr[4] == oMove && tempArr[6] == oMove
-    ) {
-      console.log("We have a winner: " + "O");
-      stopNextMove();
+    const _winArray = [
+      [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]
+    ]
+    for (i = 0; i < _winArray.length; i++) {
+      if (tempArr[_winArray[i][0]] + tempArr[_winArray[i][1]] + tempArr[_winArray[i][2]] == "XXX") {
+        console.log("We have a winner: X")
+        stopNextMove();
+      } else if (tempArr[_winArray[i][0]] + tempArr[_winArray[i][1]] + tempArr[_winArray[i][2]] == "OOO") {
+        console.log("We have a winner: O")
+        stopNextMove();
+      }
     }
   }
 
