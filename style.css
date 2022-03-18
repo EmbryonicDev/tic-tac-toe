@@ -17,7 +17,7 @@ header {
   text-align: center;
 }
 
-#boardBtnResults {
+#mainWrap {
   display: flex;
   flex-direction: column;
   align-content: center;
