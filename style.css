@@ -17,9 +17,15 @@ header {
   text-align: center;
 }
 
-#mainWrap {
+#boardBtnResults {
   display: flex;
   flex-direction: column;
+  align-content: center;
+  gap: 40px;
+}
+
+#btnWrap {
+  align-self: center;
 }
 
 .cell {
