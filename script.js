@@ -1,4 +1,4 @@
-const Gameboard = (() => {
+Gameboard = (() => {
 
   // Make gameboardArr array
   let gameboardArr = [];
@@ -26,14 +26,14 @@ const Gameboard = (() => {
   return { gameboardArr, moveTracker };
 })();
 
-const playGame = (() => {
+playGame = (() => {
   let xMove = "X",
     oMove = "O",
     tempArr = Gameboard.gameboardArr,
     moveTracker = Gameboard.moveTracker;
 
   // EventListener on cells
-  const cellListener = (() => {
+  cellListener = (() => {
     document.querySelectorAll(".cell").forEach(item => {
       item.addEventListener('click', () => {
         let cellId = item.getAttribute('data-set');
@@ -57,13 +57,13 @@ const playGame = (() => {
     })
   })()
 
-  const cellHelper = () => {
+  cellHelper = () => {
     moveTracker++
     getWinner()
   }
 
   // Determine winner
-  const getWinner = () => {
+  getWinner = () => {
     const _winArray = [
       [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]
     ]
@@ -74,7 +74,7 @@ const playGame = (() => {
       let boardChildTwo = boardChildren.item(_winArray[i][1]);
       let boardChildThree = boardChildren.item(_winArray[i][2]);
 
-      const fillWinCells = () => {
+      fillWinCells = () => {
         boardChildOne.style.cssText += 'background-color: #d4d4d8';
         boardChildTwo.style.cssText += 'background-color: #d4d4d8';
         boardChildThree.style.cssText += 'background-color: #d4d4d8';
@@ -91,7 +91,7 @@ const playGame = (() => {
     }
   }
 
-  const stopNextMove = () => {
+  stopNextMove = () => {
     document.querySelectorAll('.cell').forEach(item => {
       item.classList.add('noPlay');
     })
