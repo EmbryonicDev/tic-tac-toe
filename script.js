@@ -27,8 +27,7 @@ Gameboard = (() => {
     gameboard.style.display = 'grid';
   })();
 
-  let moveTracker = 0;
-  return { gameboardArr, moveTracker };
+  return { gameboardArr };
 })();
 
 btnNewGame = (() => {
@@ -55,7 +54,7 @@ playGame = (() => {
   let xMove = "X",
     oMove = "O",
     tempArr = Gameboard.gameboardArr,
-    moveTracker = Gameboard.moveTracker;
+    moveTracker = 0;
 
   // EventListener on cells
   cellListener = (() => {
@@ -75,7 +74,6 @@ playGame = (() => {
             tempArr[cellId] = oMove;
           }
           cellHelper();
-          Gameboard.moveTracker = moveTracker;
           Gameboard.gameboardArr = tempArr
         }
       })
