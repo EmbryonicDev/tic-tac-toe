@@ -93,11 +93,11 @@ playGame = (() => {
 
 // Determine winner
 getWinner = () => {
-  const tempArr = playGame.tempArr;
-  const _winArray = [
-    [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]
-  ]
-  const boardChildren = document.getElementById('gameboard').children;
+  const tempArr = playGame.tempArr,
+    _winArray = [
+      [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]
+    ],
+    boardChildren = document.getElementById('gameboard').children;
 
   // Select winning cells based on _winArray
   for (i = 0; i < _winArray.length; i++) {
