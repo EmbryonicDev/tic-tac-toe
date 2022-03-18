@@ -21,9 +21,18 @@ Gameboard = (() => {
   gameboard.style.gridAutoRows = `minmax(100px, auto)`;
   gameboard.style.display = 'grid';
 
-  let moveTracker = 0;
 
+  let moveTracker = 0;
   return { gameboardArr, moveTracker };
+})();
+
+btnNewGame = (() => {
+  // Create button
+  const btnWrap = document.getElementById('btnWrap'),
+    newGameBtn = document.createElement('button');
+  newGameBtn.id = 'newGameBtn';
+  newGameBtn.innerText = "New Game";
+  btnWrap.append(newGameBtn);
 })();
 
 playGame = (() => {
