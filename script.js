@@ -86,43 +86,47 @@ playGame = (() => {
     moveTracker++
     getWinner()
   }
-
-  // Determine winner
-  getWinner = () => {
-    const _winArray = [
-      [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]
-    ]
-    const boardChildren = document.getElementById('gameboard').children;
-
-    // Select winning cells based on _winArray
-    for (i = 0; i < _winArray.length; i++) {
-      let boardChildOne = boardChildren.item(_winArray[i][0]);
-      let boardChildTwo = boardChildren.item(_winArray[i][1]);
-      let boardChildThree = boardChildren.item(_winArray[i][2]);
-
-      // Fill winning cells background-color
-      fillWinCells = () => {
-        boardChildOne.style.cssText += 'background-color: #d4d4d8';
-        boardChildTwo.style.cssText += 'background-color: #d4d4d8';
-        boardChildThree.style.cssText += 'background-color: #d4d4d8';
-        stopNextMove();
-      }
-
-      // Get winner by comparing tempArr to _winArray
-      if (tempArr[_winArray[i][0]] + tempArr[_winArray[i][1]] + tempArr[_winArray[i][2]] == "XXX") {
-        console.log("We have a winner: X")
-        fillWinCells();
-      } else if (tempArr[_winArray[i][0]] + tempArr[_winArray[i][1]] + tempArr[_winArray[i][2]] == "OOO") {
-        console.log("We have a winner: O")
-        fillWinCells();
-      }
-    }
-  }
-
-  // Render eventListener obsolete 
-  stopNextMove = () => {
-    document.querySelectorAll('.cell').forEach(item => {
-      item.classList.add('noPlay');
-    })
+  return {
+    tempArr
   }
 })();
+
+// Determine winner
+getWinner = () => {
+  const tempArr = playGame.tempArr;
+  const _winArray = [
+    [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]
+  ]
+  const boardChildren = document.getElementById('gameboard').children;
+
+  // Select winning cells based on _winArray
+  for (i = 0; i < _winArray.length; i++) {
+    let boardChildOne = boardChildren.item(_winArray[i][0]);
+    let boardChildTwo = boardChildren.item(_winArray[i][1]);
+    let boardChildThree = boardChildren.item(_winArray[i][2]);
+
+    // Fill winning cells background-color
+    fillWinCells = () => {
+      boardChildOne.style.cssText += 'background-color: #d4d4d8';
+      boardChildTwo.style.cssText += 'background-color: #d4d4d8';
+      boardChildThree.style.cssText += 'background-color: #d4d4d8';
+      stopNextMove();
+    }
+
+    // Get winner by comparing tempArr to _winArray
+    if (tempArr[_winArray[i][0]] + tempArr[_winArray[i][1]] + tempArr[_winArray[i][2]] == "XXX") {
+      console.log("We have a winner: X")
+      fillWinCells();
+    } else if (tempArr[_winArray[i][0]] + tempArr[_winArray[i][1]] + tempArr[_winArray[i][2]] == "OOO") {
+      console.log("We have a winner: O")
+      fillWinCells();
+    }
+  }
+}
+
+// Render eventListener obsolete 
+stopNextMove = () => {
+  document.querySelectorAll('.cell').forEach(item => {
+    item.classList.add('noPlay');
+  })
+}
