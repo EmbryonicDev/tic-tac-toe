@@ -24,6 +24,12 @@ header {
   gap: 40px;
 }
 
+#playerWrap {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+}
+
 #btnWrap {
   align-self: center;
 }
