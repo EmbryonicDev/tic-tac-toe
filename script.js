@@ -1,26 +1,31 @@
+
 Gameboard = (() => {
+  const gameboard = document.getElementById('gameboard');
+  let gameboardArr = [];
 
   // Make gameboardArr array
-  let gameboardArr = [];
-  for (let i = 1; i < 10; i++) {
-    gameboardArr.push("");
+  emptyArr = () => {
+    for (let i = 1; i < 10; i++) {
+      gameboardArr.push("");
+    }
   }
+  emptyArr();
 
   // Make board
-  const gameboard = document.getElementById('gameboard');
-  gameboard.style.gridTemplateColumns = `repeat(3, 100px)`;
-  gameboard.style.gridAutoRows = `minmax(100px, auto)`;
-  gameboard.style.display = 'grid';
-  for (i = 0; i < 9; i++) {
-    let cell = document.createElement('div');
-    cell.className = 'cell';
-    cell.dataset.set = [i];
-    gameboard.append(cell);
-  }
-  gameboard.style.gridTemplateColumns = `repeat(3, 100px)`;
-  gameboard.style.gridAutoRows = `minmax(100px, auto)`;
-  gameboard.style.display = 'grid';
-
+  addBoard = (() => {
+    gameboard.style.gridTemplateColumns = `repeat(3, 100px)`;
+    gameboard.style.gridAutoRows = `minmax(100px, auto)`;
+    gameboard.style.display = 'grid';
+    for (i = 0; i < 9; i++) {
+      let cell = document.createElement('div');
+      cell.className = 'cell';
+      cell.dataset.set = [i];
+      gameboard.append(cell);
+    }
+    gameboard.style.gridTemplateColumns = `repeat(3, 100px)`;
+    gameboard.style.gridAutoRows = `minmax(100px, auto)`;
+    gameboard.style.display = 'grid';
+  })();
 
   let moveTracker = 0;
   return { gameboardArr, moveTracker };
@@ -33,6 +38,17 @@ btnNewGame = (() => {
   newGameBtn.id = 'newGameBtn';
   newGameBtn.innerText = "New Game";
   btnWrap.append(newGameBtn);
+
+  // Clear board
+  newGameBtn.addEventListener('click', (e) => {
+    document.querySelectorAll('.cell').forEach(item => {
+      item.style.cssText -= 'background-color: #d4d4d8';
+      item.textContent = '';
+      item.classList.remove('noPlay');
+    })
+    Gameboard.gameboardArr.splice(0);
+    emptyArr();
+  })
 })();
 
 playGame = (() => {
