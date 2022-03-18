@@ -27,10 +27,10 @@ const Gameboard = (() => {
 })();
 
 const playGame = (() => {
-  let xMove = "X";
-  let oMove = "O";
-  let tempArr = Gameboard.gameboardArr;
-  let moveTracker = Gameboard.moveTracker;
+  let xMove = "X",
+    oMove = "O",
+    tempArr = Gameboard.gameboardArr,
+    moveTracker = Gameboard.moveTracker;
 
   // EventListener on cells
   const cellListener = (() => {
@@ -38,7 +38,7 @@ const playGame = (() => {
       item.addEventListener('click', () => {
         let cellId = item.getAttribute('data-set');
 
-        // Draw on cells
+        // Play on cells
         if (item.textContent == '' && item.classList != 'cell noPlay') {
           if (moveTracker == 0 || moveTracker % 2 == 0) {
             item.textContent = xMove;
@@ -67,7 +67,7 @@ const playGame = (() => {
     const _winArray = [
       [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]
     ]
-    const boardChildren = document.getElementById('gameboard').children; 
+    const boardChildren = document.getElementById('gameboard').children;
 
     for (i = 0; i < _winArray.length; i++) {
       let boardChildOne = boardChildren.item(_winArray[i][0]);
@@ -80,7 +80,7 @@ const playGame = (() => {
         boardChildThree.style.cssText += 'background-color: #d4d4d8';
         stopNextMove();
       }
-      
+
       if (tempArr[_winArray[i][0]] + tempArr[_winArray[i][1]] + tempArr[_winArray[i][2]] == "XXX") {
         console.log("We have a winner: X")
         fillWinCells();
