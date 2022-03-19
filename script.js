@@ -85,7 +85,7 @@ playGame = (() => {
   }
 })();
 
-const varWrap = {
+const players = {
   pOneScore: 0,
   pTwoScore: 0,
   winner:''
@@ -118,13 +118,13 @@ getWinner = () => {
     // Get winner by comparing gameArr to _winArray
     if (gameArr[_winArray[i][0]] + gameArr[_winArray[i][1]] + gameArr[_winArray[i][2]] == "XXX") {
       console.log("We have a winner: X")
-      varWrap.winner = playerOne;
-      varWrap.pOneScore++;
+      players.winner = playerOne;
+      players.pOneScore++;
       fillWinCells();
     } else if (gameArr[_winArray[i][0]] + gameArr[_winArray[i][1]] + gameArr[_winArray[i][2]] == "OOO") {
       console.log("We have a winner: O")
-      varWrap.winner = playerTwo;
-      varWrap.pTwoScore++;
+      players.winner = playerTwo;
+      players.pTwoScore++;
       fillWinCells();
     }
   }
