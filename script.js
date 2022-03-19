@@ -35,16 +35,16 @@ buttons = (() => {
   // Clear board
   newGameBtn.addEventListener('click', (e) => {
     emptyPlayBoard();
-    playGame.gameArr.splice(0);
-    playGame.addArray();
   })
-
+  
   emptyPlayBoard = () => {
     document.querySelectorAll('.cell').forEach(item => {
       item.style.cssText -= 'background-color: #d4d4d8';
       item.textContent = '';
       item.classList.remove('noPlay');
     })
+    playGame.gameArr.splice(0);
+    playGame.addArray();
   }
 
   // Clear score
