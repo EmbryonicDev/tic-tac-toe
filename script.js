@@ -1,4 +1,3 @@
-
 Gameboard = (() => {
   const gameboard = document.getElementById('gameboard');
 
@@ -85,6 +84,12 @@ playGame = (() => {
     addArray
   }
 })();
+
+const varWrap = {
+  pOneScore: 0,
+  pTwoScore: 0,
+  winner:''
+}
 
 // Determine winner
 getWinner = () => {
