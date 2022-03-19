@@ -1,4 +1,3 @@
-
 Gameboard = (() => {
   const gameboard = document.getElementById('gameboard');
 
@@ -86,12 +85,38 @@ playGame = (() => {
   }
 })();
 
+const players = {
+  pOneScore: 0,
+  pTwoScore: 0,
+  winner: '',
+}
+
+const scoreFactory = (name, score, marker) => {
+  const changeBoard = () => (`${name} \n Score: ${score} \n Marker: ${marker}`);
+  return { changeBoard, name, score, marker }
+}
+
+scoreBoards = () => {
+  const playerOneBoard = document.getElementById('playerOneWrap'),
+    playerTwoBoard = document.getElementById('playerTwoWrap');
+
+  const playerOne = scoreFactory("Player 1", players.pOneScore, "❌");
+  playerOneBoard.innerText = playerOne.changeBoard();
+
+  const playerTwo = scoreFactory("Player 2", players.pOneScore, "⭕");
+  playerTwoBoard.innerText = playerTwo.changeBoard();
+
+};
+scoreBoards();
+
 // Determine winner
 getWinner = () => {
   const gameArr = playGame.gameArr,
     _winArray = [
       [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]
     ],
+    playerOne = "Player 1",
+    playerTwo = "Player 2",
     boardChildren = document.getElementById('gameboard').children;
 
   // Select winning cells based on _winArray
@@ -111,12 +136,17 @@ getWinner = () => {
     // Get winner by comparing gameArr to _winArray
     if (gameArr[_winArray[i][0]] + gameArr[_winArray[i][1]] + gameArr[_winArray[i][2]] == "XXX") {
       console.log("We have a winner: X")
+      players.winner = playerOne;
+      players.pOneScore++;
       fillWinCells();
     } else if (gameArr[_winArray[i][0]] + gameArr[_winArray[i][1]] + gameArr[_winArray[i][2]] == "OOO") {
       console.log("We have a winner: O")
+      players.winner = playerTwo;
+      players.pTwoScore++;
       fillWinCells();
     }
   }
+  scoreBoards();
 }
 
 // Render eventListener obsolete 
