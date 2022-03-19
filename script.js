@@ -42,6 +42,13 @@ addBtns = (() => {
     playGame.gameArr.splice(0);
     playGame.addArray();
   })
+
+  // Clear score
+  clearScoreBtn.addEventListener('click', () => {
+    players.pOneScore = 0;
+    players.pTwoScore = 0;
+    scoreBoards();
+  })
 })();
 
 playGame = (() => {
