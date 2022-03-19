@@ -18,23 +18,41 @@ Gameboard = (() => {
   })();
 })();
 
-btnNewGame = (() => {
+addBtns = (() => {
   // Create button
   const btnWrap = document.getElementById('btnWrap'),
-    newGameBtn = document.createElement('button');
+    newGameBtn = document.createElement('button'),
+    clearScoreBtn = document.createElement('button');
+
   newGameBtn.id = 'newGameBtn';
   newGameBtn.innerText = "New Game";
   btnWrap.append(newGameBtn);
 
+  clearScoreBtn.id = 'clearScoreBtn';
+  clearScoreBtn.innerText = "Clear Score";
+  btnWrap.append(clearScoreBtn);
+
   // Clear board
   newGameBtn.addEventListener('click', (e) => {
+    emptyPlayBoard();
+    playGame.gameArr.splice(0);
+    playGame.addArray();
+  })
+  
+  emptyPlayBoard = () => {
     document.querySelectorAll('.cell').forEach(item => {
       item.style.cssText -= 'background-color: #d4d4d8';
       item.textContent = '';
       item.classList.remove('noPlay');
     })
-    playGame.gameArr.splice(0);
-    playGame.addArray();
+  }
+
+  // Clear score
+  clearScoreBtn.addEventListener('click', () => {
+    players.pOneScore = 0;
+    players.pTwoScore = 0;
+    scoreBoards();
+    emptyPlayBoard();
   })
 })();
 
@@ -103,7 +121,7 @@ scoreBoards = () => {
   const playerOne = scoreFactory("Player 1", players.pOneScore, "❌");
   playerOneBoard.innerText = playerOne.changeBoard();
 
-  const playerTwo = scoreFactory("Player 2", players.pOneScore, "⭕");
+  const playerTwo = scoreFactory("Player 2", players.pTwoScore, "⭕");
   playerTwoBoard.innerText = playerTwo.changeBoard();
 
 };
