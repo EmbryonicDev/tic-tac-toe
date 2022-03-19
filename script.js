@@ -119,6 +119,7 @@ const scoreFactory = (name, score, marker) => {
 }
 
 scoreBoards = () => {
+  // Populate scoreboards
   const playerOneBoard = document.getElementById('playerOneWrap'),
     playerTwoBoard = document.getElementById('playerTwoWrap');
 
@@ -128,6 +129,16 @@ scoreBoards = () => {
   const playerTwo = scoreFactory("Player 2", players.pTwoScore, "⭕");
   playerTwoBoard.innerText = playerTwo.changeBoard();
 
+  // Show next player
+  if (players.nextToPlay == "O") {
+    playerTwoBoard.style.backgroundColor = "#d4d4d8";
+    playerTwoBoard.innerText += "\n Your Turn!";
+    playerOneBoard.style.backgroundColor = "";
+  } else if (players.nextToPlay == "X" || players.nextToPlay == "") {
+    playerOneBoard.style.backgroundColor = "#d4d4d8";
+    playerOneBoard.innerText += "\n Your Turn!";
+    playerTwoBoard.style.backgroundColor = "";
+  }
 };
 scoreBoards();
 
