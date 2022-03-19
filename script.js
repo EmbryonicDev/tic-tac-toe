@@ -38,7 +38,7 @@ buttons = (() => {
     playGame.gameArr.splice(0);
     playGame.addArray();
   })
-  
+
   emptyPlayBoard = () => {
     document.querySelectorAll('.cell').forEach(item => {
       item.style.cssText -= 'background-color: #d4d4d8';
@@ -59,7 +59,7 @@ buttons = (() => {
 playGame = (() => {
   let xMove = "X",
     oMove = "O",
-    moveTracker = 0,
+    // moveTracker = 0,
     gameArr = [];
 
   // Build Array to hold 9 empty values
@@ -78,11 +78,11 @@ playGame = (() => {
 
         // Play on cells
         if (item.textContent == '' && item.classList != 'cell noPlay') {
-          if (moveTracker == 0 || moveTracker % 2 == 0) {
+          if (players.moveTracker == 0 || players.moveTracker % 2 == 0) {
             item.textContent = xMove;
             item.style.cssText = 'color: red';
             gameArr[cellId] = xMove;
-          } else if (moveTracker % 2 != 0 && item.classList != 'cell noPlay') {
+          } else if (players.moveTracker % 2 != 0 && item.classList != 'cell noPlay') {
             item.textContent = oMove;
             item.style.cssText = 'color: blue';
             gameArr[cellId] = oMove;
@@ -94,8 +94,8 @@ playGame = (() => {
   })()
 
   cellHelper = () => {
-    moveTracker++
-    getWinner()
+    players.moveTracker++;
+    getWinner();
   }
   return {
     gameArr,
@@ -107,6 +107,7 @@ const players = {
   pOneScore: 0,
   pTwoScore: 0,
   winner: '',
+  moveTracker: 0
 }
 
 const scoreFactory = (name, score, marker) => {
