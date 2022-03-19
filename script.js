@@ -1,15 +1,6 @@
 
 Gameboard = (() => {
   const gameboard = document.getElementById('gameboard');
-  let gameboardArr = [];
-
-  // Make gameboardArr array
-  emptyArr = () => {
-    for (let i = 1; i < 10; i++) {
-      gameboardArr.push("");
-    }
-  }
-  emptyArr();
 
   // Make board
   addBoard = (() => {
@@ -26,8 +17,6 @@ Gameboard = (() => {
     gameboard.style.gridAutoRows = `minmax(100px, auto)`;
     gameboard.style.display = 'grid';
   })();
-
-  return { gameboardArr };
 })();
 
 btnNewGame = (() => {
@@ -45,16 +34,25 @@ btnNewGame = (() => {
       item.textContent = '';
       item.classList.remove('noPlay');
     })
-    Gameboard.gameboardArr.splice(0);
-    emptyArr();
+    playGame.gameboardArr.splice(0);
+    playGame.addArray();
   })
 })();
 
 playGame = (() => {
   let xMove = "X",
     oMove = "O",
-    tempArr = Gameboard.gameboardArr,
-    moveTracker = 0;
+    moveTracker = 0,
+    gameboardArr = [];
+
+  // Build Array to hold 9 empty values
+  addArray = () => {
+    for (let i = 1; i < 10; i++) {
+      gameboardArr.push("");
+    }
+    console.log({ gameboardArr })
+  }
+  addArray();
 
   // EventListener on cells
   cellListener = (() => {
@@ -67,14 +65,15 @@ playGame = (() => {
           if (moveTracker == 0 || moveTracker % 2 == 0) {
             item.textContent = xMove;
             item.style.cssText = 'color: red';
-            tempArr[cellId] = xMove;
+            gameboardArr[cellId] = xMove;
           } else if (moveTracker % 2 != 0 && item.classList != 'cell noPlay') {
             item.textContent = oMove;
             item.style.cssText = 'color: blue';
-            tempArr[cellId] = oMove;
+            gameboardArr[cellId] = oMove;
           }
           cellHelper();
-          Gameboard.gameboardArr = tempArr
+          console.log({ moveTracker });
+          console.log({ gameboardArr });
         }
       })
     })
@@ -85,13 +84,14 @@ playGame = (() => {
     getWinner()
   }
   return {
-    tempArr
+    gameboardArr,
+    addArray
   }
 })();
 
 // Determine winner
 getWinner = () => {
-  const tempArr = playGame.tempArr,
+  const gameboardArr = playGame.gameboardArr,
     _winArray = [
       [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]
     ],
@@ -111,11 +111,11 @@ getWinner = () => {
       stopNextMove();
     }
 
-    // Get winner by comparing tempArr to _winArray
-    if (tempArr[_winArray[i][0]] + tempArr[_winArray[i][1]] + tempArr[_winArray[i][2]] == "XXX") {
+    // Get winner by comparing gameboardArr to _winArray
+    if (gameboardArr[_winArray[i][0]] + gameboardArr[_winArray[i][1]] + gameboardArr[_winArray[i][2]] == "XXX") {
       console.log("We have a winner: X")
       fillWinCells();
-    } else if (tempArr[_winArray[i][0]] + tempArr[_winArray[i][1]] + tempArr[_winArray[i][2]] == "OOO") {
+    } else if (gameboardArr[_winArray[i][0]] + gameboardArr[_winArray[i][1]] + gameboardArr[_winArray[i][2]] == "OOO") {
       console.log("We have a winner: O")
       fillWinCells();
     }
