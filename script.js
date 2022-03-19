@@ -97,6 +97,8 @@ getWinner = () => {
     _winArray = [
       [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]
     ],
+    playerOne = "Player 1",
+    playerTwo = "Player 2",
     boardChildren = document.getElementById('gameboard').children;
 
   // Select winning cells based on _winArray
@@ -116,9 +118,13 @@ getWinner = () => {
     // Get winner by comparing gameArr to _winArray
     if (gameArr[_winArray[i][0]] + gameArr[_winArray[i][1]] + gameArr[_winArray[i][2]] == "XXX") {
       console.log("We have a winner: X")
+      varWrap.winner = playerOne;
+      varWrap.pOneScore++;
       fillWinCells();
     } else if (gameArr[_winArray[i][0]] + gameArr[_winArray[i][1]] + gameArr[_winArray[i][2]] == "OOO") {
       console.log("We have a winner: O")
+      varWrap.winner = playerTwo;
+      varWrap.pTwoScore++;
       fillWinCells();
     }
   }
