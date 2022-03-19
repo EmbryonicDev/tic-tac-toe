@@ -21,10 +21,16 @@ Gameboard = (() => {
 addBtns = (() => {
   // Create button
   const btnWrap = document.getElementById('btnWrap'),
-    newGameBtn = document.createElement('button');
+    newGameBtn = document.createElement('button'),
+    clearScoreBtn = document.createElement('button');
+
   newGameBtn.id = 'newGameBtn';
   newGameBtn.innerText = "New Game";
   btnWrap.append(newGameBtn);
+
+  clearScoreBtn.id = 'clearScoreBtn';
+  clearScoreBtn.innerText = "Clear Score";
+  btnWrap.append(clearScoreBtn);
 
   // Clear board
   newGameBtn.addEventListener('click', (e) => {
