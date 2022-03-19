@@ -82,10 +82,12 @@ playGame = (() => {
             item.textContent = xMove;
             item.style.cssText = 'color: red';
             gameArr[cellId] = xMove;
+            players.nextToPlay = oMove;
           } else if (players.moveTracker % 2 != 0 && item.classList != 'cell noPlay') {
             item.textContent = oMove;
             item.style.cssText = 'color: blue';
             gameArr[cellId] = oMove;
+            players.nextToPlay = xMove;
           }
           cellHelper();
         }
@@ -107,7 +109,8 @@ const players = {
   pOneScore: 0,
   pTwoScore: 0,
   winner: '',
-  moveTracker: 0
+  moveTracker: 0,
+  nextToPlay: ''
 }
 
 const scoreFactory = (name, score, marker) => {
