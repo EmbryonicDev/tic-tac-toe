@@ -18,7 +18,7 @@ Gameboard = (() => {
   })();
 })();
 
-btnNewGame = (() => {
+addBtns = (() => {
   // Create button
   const btnWrap = document.getElementById('btnWrap'),
     newGameBtn = document.createElement('button');
