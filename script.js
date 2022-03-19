@@ -109,7 +109,7 @@ scoreBoards = () => {
   const playerOne = scoreFactory("Player 1", players.pOneScore, "❌");
   playerOneBoard.innerText = playerOne.changeBoard();
 
-  const playerTwo = scoreFactory("Player 2", players.pOneScore, "⭕");
+  const playerTwo = scoreFactory("Player 2", players.pTwoScore, "⭕");
   playerTwoBoard.innerText = playerTwo.changeBoard();
 
 };
