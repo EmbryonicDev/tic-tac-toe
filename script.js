@@ -34,7 +34,7 @@ btnNewGame = (() => {
       item.textContent = '';
       item.classList.remove('noPlay');
     })
-    playGame.gameboardArr.splice(0);
+    playGame.gameArr.splice(0);
     playGame.addArray();
   })
 })();
@@ -43,14 +43,13 @@ playGame = (() => {
   let xMove = "X",
     oMove = "O",
     moveTracker = 0,
-    gameboardArr = [];
+    gameArr = [];
 
   // Build Array to hold 9 empty values
   addArray = () => {
     for (let i = 1; i < 10; i++) {
-      gameboardArr.push("");
+      gameArr.push("");
     }
-    console.log({ gameboardArr })
   }
   addArray();
 
@@ -65,15 +64,13 @@ playGame = (() => {
           if (moveTracker == 0 || moveTracker % 2 == 0) {
             item.textContent = xMove;
             item.style.cssText = 'color: red';
-            gameboardArr[cellId] = xMove;
+            gameArr[cellId] = xMove;
           } else if (moveTracker % 2 != 0 && item.classList != 'cell noPlay') {
             item.textContent = oMove;
             item.style.cssText = 'color: blue';
-            gameboardArr[cellId] = oMove;
+            gameArr[cellId] = oMove;
           }
           cellHelper();
-          console.log({ moveTracker });
-          console.log({ gameboardArr });
         }
       })
     })
@@ -84,14 +81,14 @@ playGame = (() => {
     getWinner()
   }
   return {
-    gameboardArr,
+    gameArr,
     addArray
   }
 })();
 
 // Determine winner
 getWinner = () => {
-  const gameboardArr = playGame.gameboardArr,
+  const gameArr = playGame.gameArr,
     _winArray = [
       [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]
     ],
@@ -111,11 +108,11 @@ getWinner = () => {
       stopNextMove();
     }
 
-    // Get winner by comparing gameboardArr to _winArray
-    if (gameboardArr[_winArray[i][0]] + gameboardArr[_winArray[i][1]] + gameboardArr[_winArray[i][2]] == "XXX") {
+    // Get winner by comparing gameArr to _winArray
+    if (gameArr[_winArray[i][0]] + gameArr[_winArray[i][1]] + gameArr[_winArray[i][2]] == "XXX") {
       console.log("We have a winner: X")
       fillWinCells();
-    } else if (gameboardArr[_winArray[i][0]] + gameboardArr[_winArray[i][1]] + gameboardArr[_winArray[i][2]] == "OOO") {
+    } else if (gameArr[_winArray[i][0]] + gameArr[_winArray[i][1]] + gameArr[_winArray[i][2]] == "OOO") {
       console.log("We have a winner: O")
       fillWinCells();
     }
