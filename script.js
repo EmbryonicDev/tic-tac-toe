@@ -38,7 +38,7 @@ buttons = (() => {
     playGame.gameArr.splice(0);
     playGame.addArray();
   })
-  
+
   emptyPlayBoard = () => {
     document.querySelectorAll('.cell').forEach(item => {
       item.style.cssText -= 'background-color: #d4d4d8';
@@ -59,7 +59,7 @@ buttons = (() => {
 playGame = (() => {
   let xMove = "X",
     oMove = "O",
-    moveTracker = 0,
+    // moveTracker = 0,
     gameArr = [];
 
   // Build Array to hold 9 empty values
@@ -78,14 +78,16 @@ playGame = (() => {
 
         // Play on cells
         if (item.textContent == '' && item.classList != 'cell noPlay') {
-          if (moveTracker == 0 || moveTracker % 2 == 0) {
+          if (players.moveTracker == 0 || players.moveTracker % 2 == 0) {
             item.textContent = xMove;
             item.style.cssText = 'color: red';
             gameArr[cellId] = xMove;
-          } else if (moveTracker % 2 != 0 && item.classList != 'cell noPlay') {
+            players.nextToPlay = oMove;
+          } else if (players.moveTracker % 2 != 0 && item.classList != 'cell noPlay') {
             item.textContent = oMove;
             item.style.cssText = 'color: blue';
             gameArr[cellId] = oMove;
+            players.nextToPlay = xMove;
           }
           cellHelper();
         }
@@ -94,8 +96,8 @@ playGame = (() => {
   })()
 
   cellHelper = () => {
-    moveTracker++
-    getWinner()
+    players.moveTracker++;
+    getWinner();
   }
   return {
     gameArr,
@@ -107,6 +109,8 @@ const players = {
   pOneScore: 0,
   pTwoScore: 0,
   winner: '',
+  moveTracker: 0,
+  nextToPlay: ''
 }
 
 const scoreFactory = (name, score, marker) => {
@@ -115,6 +119,7 @@ const scoreFactory = (name, score, marker) => {
 }
 
 scoreBoards = () => {
+  // Populate scoreboards
   const playerOneBoard = document.getElementById('playerOneWrap'),
     playerTwoBoard = document.getElementById('playerTwoWrap');
 
@@ -124,6 +129,16 @@ scoreBoards = () => {
   const playerTwo = scoreFactory("Player 2", players.pTwoScore, "⭕");
   playerTwoBoard.innerText = playerTwo.changeBoard();
 
+  // Show next player
+  if (players.nextToPlay == "O") {
+    playerTwoBoard.style.backgroundColor = "#d4d4d8";
+    playerTwoBoard.innerText += "\n Your Turn!";
+    playerOneBoard.style.backgroundColor = "";
+  } else if (players.nextToPlay == "X" || players.nextToPlay == "") {
+    playerOneBoard.style.backgroundColor = "#d4d4d8";
+    playerOneBoard.innerText += "\n Your Turn!";
+    playerTwoBoard.style.backgroundColor = "";
+  }
 };
 scoreBoards();
 
