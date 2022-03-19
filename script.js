@@ -88,8 +88,26 @@ playGame = (() => {
 const players = {
   pOneScore: 0,
   pTwoScore: 0,
-  winner:''
+  winner: '',
 }
+
+const scoreFactory = (name, score, marker) => {
+  const changeBoard = () => (`${name} \n Score: ${score} \n Marker: ${marker}`);
+  return { changeBoard, name, score, marker }
+}
+
+scoreBoards = () => {
+  const playerOneBoard = document.getElementById('playerOneWrap'),
+    playerTwoBoard = document.getElementById('playerTwoWrap');
+
+  const playerOne = scoreFactory("Player 1", players.pOneScore, "❌");
+  playerOneBoard.innerText = playerOne.changeBoard();
+
+  const playerTwo = scoreFactory("Player 2", players.pOneScore, "⭕");
+  playerTwoBoard.innerText = playerTwo.changeBoard();
+
+};
+scoreBoards();
 
 // Determine winner
 getWinner = () => {
@@ -128,6 +146,7 @@ getWinner = () => {
       fillWinCells();
     }
   }
+  scoreBoards();
 }
 
 // Render eventListener obsolete 
