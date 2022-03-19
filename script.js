@@ -92,7 +92,7 @@ const players = {
 }
 
 const scoreFactory = (name, score, marker) => {
-  const changeBoard = () => (`${name} \n Score: ${score} \n Marker: ${marker}`);
+  const changeBoard = () => (`${name} \n Marker: ${marker} \n Score: ${score}`);
   return { changeBoard, name, score, marker }
 }
 
