@@ -1,10 +1,38 @@
 const myVariables = {
+  playerOne: 'Player 1',
+  playerTwo: 'Player 2',
   pOneScore: 0,
   pTwoScore: 0,
   winner: '',
   moveTracker: 0,
   nextToPlay: ''
 }
+
+form = (() => {
+  // Create button to change names / activate form
+  const mainWrap = document.getElementById('mainWrap'),
+    newNamesBtn = document.createElement('button');
+
+  // Add button to DOM
+  newNamesBtn.id = 'newNamesBtn';
+  newNamesBtn.innerText = 'Change Names';
+  mainWrap.insertBefore(newNamesBtn, mainWrap.firstChild);
+
+  // Display form
+  newNamesBtn.addEventListener('click', () => {
+    const form = document.getElementById('form');
+    form.style.visibility = 'visible';
+
+    // Submit
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      myVariables.playerOne = form.playerOne.value;
+      myVariables.playerTwo = form.playerTwo.value;
+      scoreBoards();
+      form.style.visibility = 'hidden';
+    })
+  })
+})()
 
 Gameboard = (() => {
   const gameboard = document.getElementById('gameboard');
@@ -119,8 +147,8 @@ const scoreFactory = (name, score, marker) => {
 scoreBoards = () => {
   const playerOneBoard = document.getElementById('playerOneWrap'),
     playerTwoBoard = document.getElementById('playerTwoWrap'),
-    playerOne = scoreFactory("Player 1", myVariables.pOneScore, "❌"),
-    playerTwo = scoreFactory("Player 2", myVariables.pTwoScore, "⭕"),
+    playerOne = scoreFactory(myVariables.playerOne, myVariables.pOneScore, "❌"),
+    playerTwo = scoreFactory(myVariables.playerTwo, myVariables.pTwoScore, "⭕"),
     winnerDisplay = document.getElementById('gameResult');
 
   // Populate scoreboards
@@ -139,10 +167,10 @@ scoreBoards = () => {
   displayWinner = (() => {
     const firstCell = document.querySelector("[data-set='1']");
     if (firstCell.classList.contains('noPlay')) {
-      if (myVariables.winner == "Player 1") {
-        winnerDisplay.innerText = "Player 1 Wins!!!";
-      } else if (myVariables.winner == "Player 2") {
-        winnerDisplay.innerText = "Player 2 Wins!!!";
+      if (myVariables.winner == myVariables.playerOne) {
+        winnerDisplay.innerText = myVariables.playerOne + " Wins!!!";
+      } else if (myVariables.winner == myVariables.playerTwo) {
+        winnerDisplay.innerText = myVariables.playerTwo + " Wins!!!";
       }
     }
   })()
@@ -156,8 +184,8 @@ getWinner = () => {
     _winArray = [
       [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]
     ],
-    playerOne = "Player 1",
-    playerTwo = "Player 2",
+    playerOne = myVariables.playerOne,
+    playerTwo = myVariables.playerTwo,
     boardChildren = document.getElementById('gameboard').children;
 
   // Select winning cells based on _winArray

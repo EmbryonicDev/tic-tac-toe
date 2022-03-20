@@ -16,6 +16,26 @@
   <header>
     <h1 id="header">TiC-tAc-ToE</h1>
   </header>
+
+  <form action="#" id="form">
+    <div>
+      <p>
+        <label for="playerOne">Player 1 name:</label>
+        <input type="text" id="playerOne" maxlength="12" pattern="^(?![\s.]+$)[0-9a-zA-Z\s.]*$">
+      </p>
+    </div>
+    <div>
+      <p>
+        <label for="playerTwo">Player 2 name:</label>
+        <input type="text" id="playerTwo" maxlength="12" pattern="^(?![\s.]+$)[0-9a-zA-Z\s.]*$">
+      </p>
+    </div>
+    <div id="formBtnWrap">
+      <button type="submit" id="submitBtn">Submit</button>
+      <button type="button" id="cancelBtn">Cancel</button>
+    </div>
+  </form>
+
   <div id="mainWrap">
 
     <div id="playerWrap">
@@ -26,8 +46,6 @@
     <div id="btnWrap"></div>
     <div id="gameboard"></div>
     <div id="gameResult"></div>
-
-
 
   </div>
 
