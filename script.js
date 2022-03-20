@@ -127,6 +127,8 @@ scoreBoards = () => {
   const playerTwo = scoreFactory("Player 2", myVariables.pTwoScore, "⭕");
   playerTwoBoard.innerText = playerTwo.changeBoard();
 
+  const winnerDisplay = document.getElementById('gameResult');
+
   // Show next player
   if (myVariables.nextToPlay == "O") {
     playerTwoBoard.style.backgroundColor = "#d4d4d8";
@@ -140,17 +142,14 @@ scoreBoards = () => {
 
   // Show winner
   displayWinner = (() => {
-    const firstCell = document.querySelector("[data-set='1']"),
-      winnerDisplay = document.getElementById('gameResult');
+    const firstCell = document.querySelector("[data-set='1']");
     if (firstCell.classList.contains('noPlay')) {
       if (myVariables.winner == "Player 1") {
         winnerDisplay.innerText = "Player 1 Wins!!!";
       } else if (myVariables.winner == "Player 2") {
         winnerDisplay.innerText = "Player 2 Wins!!!";
       }
-    } else if (!firstCell.classList.contains('noPlay')) {
-      winnerDisplay.innerText = ""
-    }
+    } 
   })()
 
 };
