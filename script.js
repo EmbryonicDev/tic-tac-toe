@@ -6,6 +6,23 @@ const myVariables = {
   nextToPlay: ''
 }
 
+form = (() => {
+  // Create button to change names / activate form
+  const mainWrap = document.getElementById('mainWrap'),
+    newNamesBtn = document.createElement('button');
+
+  // Add button to DOM
+  newNamesBtn.id = 'newNamesBtn';
+  newNamesBtn.innerText = 'Change Names';
+  mainWrap.insertBefore(newNamesBtn, mainWrap.firstChild);
+
+  // Display form
+  newNamesBtn.addEventListener('click', () => {
+    const form = document.getElementById('form');
+    form.style.visibility = 'visible';
+  })
+})()
+
 Gameboard = (() => {
   const gameboard = document.getElementById('gameboard');
 
