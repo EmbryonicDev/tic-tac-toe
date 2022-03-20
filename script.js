@@ -1,3 +1,11 @@
+const myVariables = {
+  pOneScore: 0,
+  pTwoScore: 0,
+  winner: '',
+  moveTracker: 0,
+  nextToPlay: ''
+}
+
 Gameboard = (() => {
   const gameboard = document.getElementById('gameboard');
 
@@ -50,8 +58,8 @@ buttons = (() => {
 
   // Clear score
   clearScoreBtn.addEventListener('click', () => {
-    players.pOneScore = 0;
-    players.pTwoScore = 0;
+    myVariables.pOneScore = 0;
+    myVariables.pTwoScore = 0;
     scoreBoards();
     emptyPlayBoard();
   })
@@ -78,18 +86,18 @@ playGame = (() => {
 
         // Play on cells
         if (item.textContent == '' && item.classList != 'cell noPlay') {
-          if (players.moveTracker == 0 || players.moveTracker % 2 == 0) {
+          if (myVariables.moveTracker == 0 || myVariables.moveTracker % 2 == 0) {
             item.textContent = xMove;
             item.style.cssText = 'color: red';
             gameArr[cellId] = xMove;
-            players.nextToPlay = oMove;
-          } else if (players.moveTracker % 2 != 0 && item.classList != 'cell noPlay') {
+            myVariables.nextToPlay = oMove;
+          } else if (myVariables.moveTracker % 2 != 0 && item.classList != 'cell noPlay') {
             item.textContent = oMove;
             item.style.cssText = 'color: blue';
             gameArr[cellId] = oMove;
-            players.nextToPlay = xMove;
+            myVariables.nextToPlay = xMove;
           }
-          players.moveTracker++;
+          myVariables.moveTracker++;
           getWinner();
         }
       })
@@ -100,14 +108,6 @@ playGame = (() => {
     addArray
   }
 })();
-
-const players = {
-  pOneScore: 0,
-  pTwoScore: 0,
-  winner: '',
-  moveTracker: 0,
-  nextToPlay: ''
-}
 
 // Feed info to scoreboards
 const scoreFactory = (name, score, marker) => {
@@ -120,18 +120,18 @@ scoreBoards = () => {
   const playerOneBoard = document.getElementById('playerOneWrap'),
     playerTwoBoard = document.getElementById('playerTwoWrap');
 
-  const playerOne = scoreFactory("Player 1", players.pOneScore, "❌");
+  const playerOne = scoreFactory("Player 1", myVariables.pOneScore, "❌");
   playerOneBoard.innerText = playerOne.changeBoard();
 
-  const playerTwo = scoreFactory("Player 2", players.pTwoScore, "⭕");
+  const playerTwo = scoreFactory("Player 2", myVariables.pTwoScore, "⭕");
   playerTwoBoard.innerText = playerTwo.changeBoard();
 
   // Show next player
-  if (players.nextToPlay == "O") {
+  if (myVariables.nextToPlay == "O") {
     playerTwoBoard.style.backgroundColor = "#d4d4d8";
     playerTwoBoard.innerText += "\n Your Turn!";
     playerOneBoard.style.backgroundColor = "";
-  } else if (players.nextToPlay == "X" || players.nextToPlay == "") {
+  } else if (myVariables.nextToPlay == "X" || myVariables.nextToPlay == "") {
     playerOneBoard.style.backgroundColor = "#d4d4d8";
     playerOneBoard.innerText += "\n Your Turn!";
     playerTwoBoard.style.backgroundColor = "";
@@ -166,13 +166,13 @@ getWinner = () => {
     // Get winner by comparing gameArr to _winArray
     if (gameArr[_winArray[i][0]] + gameArr[_winArray[i][1]] + gameArr[_winArray[i][2]] == "XXX") {
       console.log("We have a winner: X")
-      players.winner = playerOne;
-      players.pOneScore++;
+      myVariables.winner = playerOne;
+      myVariables.pOneScore++;
       fillWinCells();
     } else if (gameArr[_winArray[i][0]] + gameArr[_winArray[i][1]] + gameArr[_winArray[i][2]] == "OOO") {
       console.log("We have a winner: O")
-      players.winner = playerTwo;
-      players.pTwoScore++;
+      myVariables.winner = playerTwo;
+      myVariables.pTwoScore++;
       fillWinCells();
     }
   }
