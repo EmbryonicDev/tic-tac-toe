@@ -44,6 +44,7 @@ buttons = (() => {
   // Clear board & array
   newGameBtn.addEventListener('click', (e) => {
     emptyPlayBoard();
+    scoreBoards();
   })
 
   emptyPlayBoard = () => {
@@ -136,6 +137,22 @@ scoreBoards = () => {
     playerOneBoard.innerText += "\n Your Turn!";
     playerTwoBoard.style.backgroundColor = "";
   }
+
+  // Show winner
+  displayWinner = (() => {
+    const firstCell = document.querySelector("[data-set='1']"),
+      winnerDisplay = document.getElementById('gameResult');
+    if (firstCell.classList.contains('noPlay')) {
+      if (myVariables.winner == "Player 1") {
+        winnerDisplay.innerText = "Player 1 Wins!!!";
+      } else if (myVariables.winner == "Player 2") {
+        winnerDisplay.innerText = "Player 2 Wins!!!";
+      }
+    } else if (!firstCell.classList.contains('noPlay')) {
+      winnerDisplay.innerText = ""
+    }
+  })()
+
 };
 scoreBoards();
 
