@@ -90,16 +90,12 @@ playGame = (() => {
             gameArr[cellId] = oMove;
             players.nextToPlay = xMove;
           }
-          cellHelper();
+          players.moveTracker++;
+          getWinner();
         }
       })
     })
   })()
-
-  cellHelper = () => {
-    players.moveTracker++;
-    getWinner();
-  }
   return {
     gameArr,
     addArray
