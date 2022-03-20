@@ -117,17 +117,16 @@ const scoreFactory = (name, score, marker) => {
 }
 
 scoreBoards = () => {
-  // Populate scoreboards
   const playerOneBoard = document.getElementById('playerOneWrap'),
-    playerTwoBoard = document.getElementById('playerTwoWrap');
+    playerTwoBoard = document.getElementById('playerTwoWrap'),
+    playerOne = scoreFactory("Player 1", myVariables.pOneScore, "❌"),
+    playerTwo = scoreFactory("Player 2", myVariables.pTwoScore, "⭕"),
+    winnerDisplay = document.getElementById('gameResult');
 
-  const playerOne = scoreFactory("Player 1", myVariables.pOneScore, "❌");
+  // Populate scoreboards
   playerOneBoard.innerText = playerOne.changeBoard();
-
-  const playerTwo = scoreFactory("Player 2", myVariables.pTwoScore, "⭕");
   playerTwoBoard.innerText = playerTwo.changeBoard();
 
-  const winnerDisplay = document.getElementById('gameResult');
 
   // Show next player
   if (myVariables.nextToPlay == "O") {
@@ -145,7 +144,7 @@ scoreBoards = () => {
       } else if (myVariables.winner == "Player 2") {
         winnerDisplay.innerText = "Player 2 Wins!!!";
       }
-    } 
+    }
   })()
 
 };
