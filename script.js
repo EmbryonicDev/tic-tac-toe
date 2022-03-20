@@ -19,11 +19,12 @@ Gameboard = (() => {
 })();
 
 buttons = (() => {
-  // Create button
+  // Create buttons
   const btnWrap = document.getElementById('btnWrap'),
     newGameBtn = document.createElement('button'),
     clearScoreBtn = document.createElement('button');
 
+  // Apply buttons
   newGameBtn.id = 'newGameBtn';
   newGameBtn.innerText = "New Game";
   btnWrap.append(newGameBtn);
@@ -32,11 +33,11 @@ buttons = (() => {
   clearScoreBtn.innerText = "Clear Score";
   btnWrap.append(clearScoreBtn);
 
-  // Clear board
+  // Clear board & array
   newGameBtn.addEventListener('click', (e) => {
     emptyPlayBoard();
   })
-  
+
   emptyPlayBoard = () => {
     document.querySelectorAll('.cell').forEach(item => {
       item.style.cssText -= 'background-color: #d4d4d8';
@@ -113,6 +114,7 @@ const players = {
   nextToPlay: ''
 }
 
+// Feed info to scoreboards
 const scoreFactory = (name, score, marker) => {
   const changeBoard = () => (`${name} \n Marker: ${marker} \n Score: ${score}`);
   return { changeBoard, name, score, marker }
@@ -182,7 +184,7 @@ getWinner = () => {
   scoreBoards();
 }
 
-// Render eventListener obsolete 
+// Render gameboard eventListener obsolete 
 stopNextMove = () => {
   document.querySelectorAll('.cell').forEach(item => {
     item.classList.add('noPlay');
