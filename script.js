@@ -22,6 +22,8 @@ form = (() => {
   newNamesBtn.addEventListener('click', () => {
     const form = document.getElementById('form');
     form.style.visibility = 'visible';
+    form.playerOne.value = '';
+    form.playerTwo.value = '';
 
     // Submit
     form.addEventListener('submit', (e) => {
