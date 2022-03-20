@@ -131,13 +131,9 @@ scoreBoards = () => {
 
   // Show next player
   if (myVariables.nextToPlay == "O") {
-    playerTwoBoard.style.backgroundColor = "#d4d4d8";
     winnerDisplay.innerText = "⭕ to play...";
-    playerOneBoard.style.backgroundColor = "";
   } else if (myVariables.nextToPlay == "X" || myVariables.nextToPlay == "") {
-    playerOneBoard.style.backgroundColor = "#d4d4d8";
     winnerDisplay.innerText = "❌ to play...";
-    playerTwoBoard.style.backgroundColor = "";
   }
 
   // Show winner
