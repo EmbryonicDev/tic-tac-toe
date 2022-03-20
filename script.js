@@ -20,6 +20,15 @@ form = (() => {
   newNamesBtn.addEventListener('click', () => {
     const form = document.getElementById('form');
     form.style.visibility = 'visible';
+
+    // Submit
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      myVariables.playerOne = form.playerOne.value;
+      myVariables.playerTwo = form.playerTwo.value;
+      scoreBoards();
+      form.style.visibility = 'hidden';
+    })
   })
 })()
 
