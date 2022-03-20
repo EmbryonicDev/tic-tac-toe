@@ -211,12 +211,10 @@ getWinner = () => {
 
     // Get winner by comparing gameArr to _winArray
     if (gameArr[_winArray[i][0]] + gameArr[_winArray[i][1]] + gameArr[_winArray[i][2]] == "XXX") {
-      console.log("We have a winner: X")
       myVariables.winner = playerOne;
       myVariables.pOneScore++;
       fillWinCells();
     } else if (gameArr[_winArray[i][0]] + gameArr[_winArray[i][1]] + gameArr[_winArray[i][2]] == "OOO") {
-      console.log("We have a winner: O")
       myVariables.winner = playerTwo;
       myVariables.pTwoScore++;
       fillWinCells();
