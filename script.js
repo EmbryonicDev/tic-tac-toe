@@ -60,7 +60,6 @@ buttons = (() => {
 playGame = (() => {
   let xMove = "X",
     oMove = "O",
-    // moveTracker = 0,
     gameArr = [];
 
   // Build Array to hold 9 empty values
