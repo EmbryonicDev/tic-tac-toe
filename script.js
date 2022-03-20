@@ -31,6 +31,11 @@ form = (() => {
       scoreBoards();
       form.style.visibility = 'hidden';
     })
+
+    // Cancel
+    document.getElementById('cancelBtn').addEventListener("click", () => {
+      form.style.visibility = 'hidden';
+    })
   })
 })()
 
