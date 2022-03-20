@@ -67,6 +67,12 @@ header {
   border-right: 0;
 }
 
+#gameResult {
+  height: 4rem;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
 footer  {
   display: flex;
   text-align: center;
