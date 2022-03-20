@@ -61,8 +61,8 @@ buttons = (() => {
   clearScoreBtn.addEventListener('click', () => {
     myVariables.pOneScore = 0;
     myVariables.pTwoScore = 0;
-    scoreBoards();
     emptyPlayBoard();
+    scoreBoards();
   })
 })();
 
