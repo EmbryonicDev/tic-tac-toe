@@ -163,9 +163,11 @@ scoreBoards = () => {
     pTwoDisplay = scoreFactory(myVariables.playerTwo, myVariables.pTwoScore, "⭕"),
     winnerDisplay = document.getElementById('gameResult');
 
-  // Populate scoreboards
-  pOneBoard.innerText = pOneDisplay.changeBoard();
-  pTwoBoard.innerText = pTwoDisplay.changeBoard();
+  pOneText.innerText = pOneDisplay.changeBoard();
+  pTwoText.innerText = pTwoDisplay.changeBoard();
+
+  pOneBoard.append(pOneText);
+  pTwoBoard.append(pTwoText);
 
   // Show next player
   if (myVariables.nextToPlay == "O") {
@@ -185,7 +187,6 @@ scoreBoards = () => {
       }
     }
   })()
-
 };
 scoreBoards();
 
