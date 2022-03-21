@@ -68,7 +68,9 @@ label {
 
 #playerOneWrap,
 #playerTwoWrap  {
-  width: 100%;
+  width: 30%;
+  padding: 5px;
+  border-radius: 8px;
 }
 
 p {
@@ -79,12 +81,11 @@ p {
 
 #playerOneWrap > p:first-child, 
 #playerTwoWrap > p:first-child {
-  height: 32px;
+  height: 1.4rem;
+  font-size: 1.3rem;
+  width: fit-content;
+  font-style: italic;
 }
-
-#playerTwoWrap p {
-  margin-left: 36%;
-} 
 
 .cell {
   display: flex;
