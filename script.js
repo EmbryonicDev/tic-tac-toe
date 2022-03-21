@@ -169,6 +169,12 @@ scoreBoards = () => {
   pOneBoard.append(pOneText);
   pTwoBoard.append(pTwoText);
 
+  // Without this formula ↓ new <p>'s are added everytime scoreBoards() is called
+  if(pOneBoard.childNodes.length > 1) {
+    pOneBoard.removeChild(pOneBoard.firstChild);
+    pTwoBoard.removeChild(pTwoBoard.firstChild);
+  }
+
   // Show next player
   if (myVariables.nextToPlay == "O") {
     winnerDisplay.innerText = "⭕ to play...";
