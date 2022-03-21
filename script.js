@@ -177,8 +177,8 @@ scoreBoards = () => {
     pTwoBoard.style.cssText = "border: solid black";
     pOneBoard.style.cssText -= "border: solid black";
   } else {
-    pOneWinner,innerText = "";
-    pTwoWinner,innerText = "";
+    pOneWinner.innerText = "";
+    pTwoWinner.innerText = "";
     pOneBoard.style.cssText -= "border: solid black";
     pTwoBoard.style.cssText -= "border: solid black";
   }
