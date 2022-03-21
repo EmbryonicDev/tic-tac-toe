@@ -5,7 +5,9 @@ const myVariables = {
   pTwoScore: 0,
   winner: '',
   moveTracker: 0,
-  nextToPlay: ''
+  nextToPlay: '',
+  tie: '',
+  gameMoves: 0,
 }
 
 Gameboard = (() => {
@@ -136,6 +138,12 @@ playGame = (() => {
           }
           myVariables.moveTracker++;
           getWinner();
+        }
+        // Check if all blocks are played & no one won
+        if (item.innerText != '') gameMoves++;
+        console.log({ gameMoves })
+        if (gameMoves > 8) {
+          myVariables.tie = "Yes";
         }
       })
     })
