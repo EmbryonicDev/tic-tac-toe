@@ -8,39 +8,6 @@ const myVariables = {
   nextToPlay: ''
 }
 
-form = (() => {
-  // Create button to change names / activate form
-  const mainWrap = document.getElementById('mainWrap'),
-    newNamesBtn = document.createElement('button');
-
-  // Add button to DOM
-  newNamesBtn.id = 'newNamesBtn';
-  newNamesBtn.innerText = 'Change Names';
-  mainWrap.insertBefore(newNamesBtn, mainWrap.firstChild);
-
-  // Display form
-  newNamesBtn.addEventListener('click', () => {
-    const form = document.getElementById('form');
-    form.style.visibility = 'visible';
-    form.playerOne.value = '';
-    form.playerTwo.value = '';
-
-    // Submit
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      myVariables.playerOne = form.playerOne.value;
-      myVariables.playerTwo = form.playerTwo.value;
-      scoreBoards();
-      form.style.visibility = 'hidden';
-    })
-
-    // Cancel
-    document.getElementById('cancelBtn').addEventListener("click", () => {
-      form.style.visibility = 'hidden';
-    })
-  })
-})()
-
 Gameboard = (() => {
   const gameboard = document.getElementById('gameboard');
 
@@ -100,6 +67,40 @@ buttons = (() => {
     scoreBoards();
   })
 })();
+
+form = (() => {
+  // Create button to change names / activate form
+  const mainWrap = document.getElementById('mainWrap'),
+    btnWrap = document.getElementById('btnWrap'),
+    newNamesBtn = document.createElement('button');
+
+  // Add button to DOM
+  newNamesBtn.id = 'newNamesBtn';
+  newNamesBtn.innerText = 'Edit Names';
+  btnWrap.append(newNamesBtn);
+
+  // Display form
+  newNamesBtn.addEventListener('click', () => {
+    const form = document.getElementById('form');
+    form.style.visibility = 'visible';
+    form.playerOne.value = '';
+    form.playerTwo.value = '';
+
+    // Submit
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      myVariables.playerOne = form.playerOne.value;
+      myVariables.playerTwo = form.playerTwo.value;
+      scoreBoards();
+      form.style.visibility = 'hidden';
+    })
+
+    // Cancel
+    document.getElementById('cancelBtn').addEventListener("click", () => {
+      form.style.visibility = 'hidden';
+    })
+  })
+})()
 
 playGame = (() => {
   let xMove = "X",
