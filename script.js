@@ -153,16 +153,50 @@ const scoreFactory = (name, score, marker) => {
 }
 
 scoreBoards = () => {
-  const playerOneBoard = document.getElementById('playerOneWrap'),
-    playerTwoBoard = document.getElementById('playerTwoWrap'),
-    playerOne = scoreFactory(myVariables.playerOne, myVariables.pOneScore, "❌"),
-    playerTwo = scoreFactory(myVariables.playerTwo, myVariables.pTwoScore, "⭕"),
+  const pOneBoard = document.getElementById('playerOneWrap'),
+    pTwoBoard = document.getElementById('playerTwoWrap'),
+    pOneWinner = document.createElement('p'),
+    pTwoWinner = document.createElement('p'),
+    pOneText = document.createElement('p'),
+    pTwoText = document.createElement('p'),
+    pOneDisplay = scoreFactory(myVariables.playerOne, myVariables.pOneScore, "❌"),
+    pTwoDisplay = scoreFactory(myVariables.playerTwo, myVariables.pTwoScore, "⭕"),
     winnerDisplay = document.getElementById('gameResult');
 
-  // Populate scoreboards
-  playerOneBoard.innerText = playerOne.changeBoard();
-  playerTwoBoard.innerText = playerTwo.changeBoard();
+  let leader = "";
 
+  // Show leader
+  if (myVariables.pOneScore > myVariables.pTwoScore) {
+    leader = myVariables.playerOne;
+    pOneWinner.innerText = "Leader";
+    pOneBoard.style.cssText = "border: solid black";
+    pTwoBoard.style.cssText -= "border: solid black";
+  } else if (myVariables.pTwoScore > myVariables.pOneScore) {
+    leader = myVariables.playerTwo;
+    pTwoWinner.innerText = "Leader";
+    pTwoBoard.style.cssText = "border: solid black";
+    pOneBoard.style.cssText -= "border: solid black";
+  } else {
+    pOneWinner,innerText = "";
+    pTwoWinner,innerText = "";
+    pOneBoard.style.cssText -= "border: solid black";
+    pTwoBoard.style.cssText -= "border: solid black";
+  }
+
+  // Show player info
+  pOneText.innerText = pOneDisplay.changeBoard();
+  pTwoText.innerText = pTwoDisplay.changeBoard();
+
+  pOneBoard.append(pOneWinner);
+  pTwoBoard.append(pTwoWinner);
+  pOneBoard.append(pOneText);
+  pTwoBoard.append(pTwoText);
+
+  // Prevent new <p>'s from being added everytime scoreBoards() is called
+  while (pOneBoard.childNodes.length > 2 || pTwoBoard.childNodes.length > 2) {
+    pOneBoard.removeChild(pOneBoard.firstChild);
+    pTwoBoard.removeChild(pTwoBoard.firstChild);
+  }
 
   // Show next player
   if (myVariables.nextToPlay == "O") {
@@ -182,7 +216,6 @@ scoreBoards = () => {
       }
     }
   })()
-
 };
 scoreBoards();
 

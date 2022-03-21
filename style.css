@@ -62,9 +62,29 @@ label {
 #playerWrap {
   display: flex;
   flex-direction: row;
-  gap: 50px;
-  align-items: center;
-  justify-content: center;
+  align-items: end;
+  justify-content: space-between;
+}
+
+#playerOneWrap,
+#playerTwoWrap  {
+  width: 30%;
+  padding: 5px;
+  border-radius: 8px;
+}
+
+p {
+  margin: 0;
+  line-height: 24px;
+  width: 100%;
+}
+
+#playerOneWrap > p:first-child, 
+#playerTwoWrap > p:first-child {
+  height: 1.4rem;
+  font-size: 1.3rem;
+  width: fit-content;
+  font-style: italic;
 }
 
 .cell {
