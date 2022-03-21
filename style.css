@@ -50,6 +50,7 @@ label {
   flex-direction: column;
   align-content: center;
   gap: 30px;
+  margin: 15px 0;
 }
 
 #btnWrap {
