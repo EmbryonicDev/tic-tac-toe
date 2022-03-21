@@ -160,6 +160,44 @@ playGame = (() => {
   }
 })();
 
+// Determine winner
+getWinner = () => {
+  const gameArr = playGame.gameArr,
+    _winArray = [
+      [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]
+    ],
+    playerOne = myVariables.playerOne,
+    playerTwo = myVariables.playerTwo,
+    boardChildren = document.getElementById('gameboard').children;
+
+  // Select winning cells based on _winArray
+  for (i = 0; i < _winArray.length; i++) {
+    let boardChildOne = boardChildren.item(_winArray[i][0]);
+    let boardChildTwo = boardChildren.item(_winArray[i][1]);
+    let boardChildThree = boardChildren.item(_winArray[i][2]);
+
+    // Fill winning cells background-color
+    fillWinCells = () => {
+      boardChildOne.style.cssText += 'background-color: #d4d4d8';
+      boardChildTwo.style.cssText += 'background-color: #d4d4d8';
+      boardChildThree.style.cssText += 'background-color: #d4d4d8';
+      stopNextMove();
+    }
+
+    // Get winner by comparing gameArr to _winArray
+    if (gameArr[_winArray[i][0]] + gameArr[_winArray[i][1]] + gameArr[_winArray[i][2]] == "XXX") {
+      myVariables.winner = playerOne;
+      myVariables.pOneScore++;
+      fillWinCells();
+    } else if (gameArr[_winArray[i][0]] + gameArr[_winArray[i][1]] + gameArr[_winArray[i][2]] == "OOO") {
+      myVariables.winner = playerTwo;
+      myVariables.pTwoScore++;
+      fillWinCells();
+    }
+  }
+  scoreBoards();
+}
+
 // Feed info to scoreboards
 const scoreFactory = (name, score, marker) => {
   const changeBoard = () => (`${name} \n Marker: ${marker} \n Score: ${score}`);
@@ -234,44 +272,6 @@ scoreBoards = () => {
   })()
 };
 scoreBoards();
-
-// Determine winner
-getWinner = () => {
-  const gameArr = playGame.gameArr,
-    _winArray = [
-      [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]
-    ],
-    playerOne = myVariables.playerOne,
-    playerTwo = myVariables.playerTwo,
-    boardChildren = document.getElementById('gameboard').children;
-
-  // Select winning cells based on _winArray
-  for (i = 0; i < _winArray.length; i++) {
-    let boardChildOne = boardChildren.item(_winArray[i][0]);
-    let boardChildTwo = boardChildren.item(_winArray[i][1]);
-    let boardChildThree = boardChildren.item(_winArray[i][2]);
-
-    // Fill winning cells background-color
-    fillWinCells = () => {
-      boardChildOne.style.cssText += 'background-color: #d4d4d8';
-      boardChildTwo.style.cssText += 'background-color: #d4d4d8';
-      boardChildThree.style.cssText += 'background-color: #d4d4d8';
-      stopNextMove();
-    }
-
-    // Get winner by comparing gameArr to _winArray
-    if (gameArr[_winArray[i][0]] + gameArr[_winArray[i][1]] + gameArr[_winArray[i][2]] == "XXX") {
-      myVariables.winner = playerOne;
-      myVariables.pOneScore++;
-      fillWinCells();
-    } else if (gameArr[_winArray[i][0]] + gameArr[_winArray[i][1]] + gameArr[_winArray[i][2]] == "OOO") {
-      myVariables.winner = playerTwo;
-      myVariables.pTwoScore++;
-      fillWinCells();
-    }
-  }
-  scoreBoards();
-}
 
 // Render gameboard eventListener obsolete 
 stopNextMove = () => {
