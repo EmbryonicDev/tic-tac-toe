@@ -100,21 +100,29 @@ p {
 #gameboard > div:nth-child(2),
 #gameboard > div:nth-child(3) {
   border-top: 0;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 }
 #gameboard > div:nth-child(7),
 #gameboard > div:nth-child(8),
 #gameboard > div:nth-child(9) {
   border-bottom: 0;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 #gameboard > div:nth-child(1),
 #gameboard > div:nth-child(4),
 #gameboard > div:nth-child(7) {
   border-left: 0;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
 }
 #gameboard > div:nth-child(3),
 #gameboard > div:nth-child(6),
 #gameboard > div:nth-child(9) {
   border-right: 0;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 
 #gameResult {
