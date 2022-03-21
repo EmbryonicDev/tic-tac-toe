@@ -155,6 +155,10 @@ const scoreFactory = (name, score, marker) => {
 scoreBoards = () => {
   const pOneBoard = document.getElementById('playerOneWrap'),
     pTwoBoard = document.getElementById('playerTwoWrap'),
+    pOneWinner = document.createElement('p'),
+    pTwoWinner = document.createElement('p'),
+    pOneText = document.createElement('p'),
+    pTwoText = document.createElement('p'),
     pOneDisplay = scoreFactory(myVariables.playerOne, myVariables.pOneScore, "❌"),
     pTwoDisplay = scoreFactory(myVariables.playerTwo, myVariables.pTwoScore, "⭕"),
     winnerDisplay = document.getElementById('gameResult');
