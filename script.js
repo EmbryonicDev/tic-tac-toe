@@ -155,14 +155,13 @@ const scoreFactory = (name, score, marker) => {
 scoreBoards = () => {
   const playerOneBoard = document.getElementById('playerOneWrap'),
     playerTwoBoard = document.getElementById('playerTwoWrap'),
-    playerOne = scoreFactory(myVariables.playerOne, myVariables.pOneScore, "❌"),
-    playerTwo = scoreFactory(myVariables.playerTwo, myVariables.pTwoScore, "⭕"),
+    pOneDisplay = scoreFactory(myVariables.playerOne, myVariables.pOneScore, "❌"),
+    pTwoDisplay = scoreFactory(myVariables.playerTwo, myVariables.pTwoScore, "⭕"),
     winnerDisplay = document.getElementById('gameResult');
 
   // Populate scoreboards
-  playerOneBoard.innerText = playerOne.changeBoard();
-  playerTwoBoard.innerText = playerTwo.changeBoard();
-
+  playerOneBoard.innerText = pOneDisplay.changeBoard();
+  playerTwoBoard.innerText = pTwoDisplay.changeBoard();
 
   // Show next player
   if (myVariables.nextToPlay == "O") {
