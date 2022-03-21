@@ -52,9 +52,10 @@ label {
   gap: 30px;
 }
 
-#newNamesBtn {
-  width: fit-content;
+#btnWrap {
   align-self: center;
+  display: flex;
+  gap: 10px;
 }
 
 #playerWrap {
@@ -63,12 +64,6 @@ label {
   gap: 50px;
   align-items: center;
   justify-content: center;
-}
-
-#btnWrap {
-  align-self: center;
-  display: flex;
-  gap: 50px;
 }
 
 .cell {
