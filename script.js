@@ -163,14 +163,31 @@ scoreBoards = () => {
     pTwoDisplay = scoreFactory(myVariables.playerTwo, myVariables.pTwoScore, "⭕"),
     winnerDisplay = document.getElementById('gameResult');
 
+  let leader = "";
+
+  // Show leader
+  if (myVariables.pOneScore > myVariables.pTwoScore) {
+    leader = myVariables.playerOne;
+    pOneWinner.innerText = "Leader";
+  } else if (myVariables.pTwoScore > myVariables.pOneScore) {
+    leader = myVariables.playerTwo;
+    pTwoWinner.innerText = "Leader";
+  } else {
+    pOneWinner,innerText = "";
+    pTwoWinner,innerText = "";
+  }
+
+  // Show player info
   pOneText.innerText = pOneDisplay.changeBoard();
   pTwoText.innerText = pTwoDisplay.changeBoard();
 
+  pOneBoard.append(pOneWinner);
+  pTwoBoard.append(pTwoWinner);
   pOneBoard.append(pOneText);
   pTwoBoard.append(pTwoText);
 
-  // Without this formula ↓ new <p>'s are added everytime scoreBoards() is called
-  if(pOneBoard.childNodes.length > 1) {
+  // Prevent new <p>'s from being added everytime scoreBoards() is called
+  while (pOneBoard.childNodes.length > 2 || pTwoBoard.childNodes.length > 2) {
     pOneBoard.removeChild(pOneBoard.firstChild);
     pTwoBoard.removeChild(pTwoBoard.firstChild);
   }
