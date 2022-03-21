@@ -47,8 +47,11 @@ buttons = (() => {
 
   // Clear board & array
   newGameBtn.addEventListener('click', (e) => {
+    myVariables.tie = '';
+    myVariables.winner = '';
     emptyPlayBoard();
     scoreBoards();
+    myVariables.gameMoves = 0;
   })
 
   emptyPlayBoard = () => {
@@ -65,8 +68,11 @@ buttons = (() => {
   clearScoreBtn.addEventListener('click', () => {
     myVariables.pOneScore = 0;
     myVariables.pTwoScore = 0;
+    myVariables.tie = '';
+    myVariables.winner = '';
     emptyPlayBoard();
     scoreBoards();
+    myVariables.gameMoves = 0;
   })
 })();
 
@@ -125,6 +131,7 @@ playGame = (() => {
 
         // Play on cells
         if (item.textContent == '' && item.classList != 'cell noPlay') {
+          myVariables.gameMoves++;
           if (myVariables.moveTracker == 0 || myVariables.moveTracker % 2 == 0) {
             item.textContent = xMove;
             item.style.cssText = 'color: red';
@@ -137,14 +144,13 @@ playGame = (() => {
             myVariables.nextToPlay = xMove;
           }
           myVariables.moveTracker++;
-          getWinner();
         }
-        // Check if all blocks are played & no one won
-        if (item.innerText != '') gameMoves++;
-        console.log({ gameMoves })
-        if (gameMoves > 8) {
+        // Check if it's a tied game
+        if (myVariables.gameMoves > 8 && myVariables.winner == '' && item.classList != 'cell noPlay') {
           myVariables.tie = "Yes";
+          stopNextMove();
         }
+        getWinner();
       })
     })
   })()
@@ -207,10 +213,12 @@ scoreBoards = () => {
   }
 
   // Show next player
-  if (myVariables.nextToPlay == "O") {
+  if (myVariables.nextToPlay == "O" && myVariables.tie == "") {
     winnerDisplay.innerText = "⭕ to play...";
-  } else if (myVariables.nextToPlay == "X" || myVariables.nextToPlay == "") {
+  } else if ((myVariables.nextToPlay == "X" || myVariables.nextToPlay == "") && myVariables.tie == "") {
     winnerDisplay.innerText = "❌ to play...";
+  } else if (myVariables.tie == 'Yes') {
+    winnerDisplay.innerText = "It's a tie 👔";
   }
 
   // Show winner
