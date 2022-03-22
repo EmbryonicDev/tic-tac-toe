@@ -9,6 +9,7 @@
   --colorAmber600: #d97706;
   --colorAmber700: #b45309;
   --colorAmber800: #92400e;
+  --colorAmber900: #78350f
 }
 
 body {
@@ -68,10 +69,10 @@ header {
   visibility: visible;
   display: grid;
   gap: 10px;
-  border: solid var(--colorAmber800);
+  border: solid var(--colorAmber900);
   border-radius: 12px;
   padding: 10px;
-  background: var(--colorAmber600);
+  background: var(--colorAmber700);
   color: var(--colorAmber100);
   box-shadow: 4px 4px 10px rgb(0, 0, 0, 0.5);
 }
@@ -86,11 +87,35 @@ header {
   gap: 15px;
 }
 
-#formBtnWrap button {
+button {
   background: var(--colorAmber100);
   color: var(--colorAmber800);
+  border: solid var(--colorAmber900);
+  border-radius: 6px;
+  padding: 2.5px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4);
 }
 
+
+#btnWrap button {
+  background: var(--colorAmber300);
+  color: var(--colorAmber800);
+  border: solid var(--colorAmber900);
+}
+
+button:hover,
+#btnWrap button:hover {
+  transform: rotateX(360deg);
+  transition: 0.8s;
+  background: var(--colorAmber900);
+  color: var(--colorAmber100);
+  border: solid var(--colorAmber100);
+  cursor: pointer;
+}
+
+#btnWrap button:hover {
+  border: solid white;
+}
 label {
   font-weight: 500;
   margin-right: 5px;
@@ -100,7 +125,7 @@ input {
   box-sizing: border-box;
   background: var(--colorAmber100);
   border-radius: 6px;
-  border: solid var(--colorAmber800);
+  border: solid var(--colorAmber900);
   padding: 2.5px;
 }
 
@@ -116,10 +141,6 @@ background: var(--colorAmber300);
   align-content: center;
   gap: 30px;
   margin: 15px 0;
-}
-
-button {
-  border-radius: 6px;
 }
 
 #btnWrap {
