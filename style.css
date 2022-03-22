@@ -12,12 +12,12 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  font-family: 'Permanent Marker', cursive;
 }
 
 header {
   background-color: var(--tempColor);
   width: 100%;
-  font-family: 'Permanent Marker', cursive;
   padding: 20px;
   text-align: center;
 }
