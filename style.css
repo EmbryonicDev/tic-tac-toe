@@ -102,7 +102,7 @@ button {
 
 button:hover,
 #btnWrap button:hover {
-  transform: rotateX(360deg);
+  transform: scale(1.15);
   transition: 0.8s;
   background: var(--colorAmber900);
   color: var(--colorAmber100);
