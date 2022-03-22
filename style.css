@@ -163,8 +163,8 @@ p {
 #gameboard > div:nth-child(6),
 #gameboard > div:nth-child(9) {
   border-right: 0;
-  border-top-r-radius: 12px;
-  border-bottom-r-radius: 12px;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 
 #gameResult {
