@@ -178,9 +178,9 @@ getWinner = () => {
 
     // Fill winning cells background-color
     fillWinCells = () => {
-      boardChildOne.style.cssText += 'background-color: #d4d4d8';
-      boardChildTwo.style.cssText += 'background-color: #d4d4d8';
-      boardChildThree.style.cssText += 'background-color: #d4d4d8';
+      boardChildOne.style.cssText += 'background: #fbbf24';
+      boardChildTwo.style.cssText += 'background: #fbbf24';
+      boardChildThree.style.cssText += 'background: #fbbf24';
       stopNextMove();
     }
 
