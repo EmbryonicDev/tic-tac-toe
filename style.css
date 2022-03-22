@@ -2,6 +2,11 @@
 
 :root {
   --tempColor: #94a3b8;
+  --colorAmber400: #fbbf24;
+  --colorAmber500: #f59e0b;
+  --colorAmber600: #d97706;
+  --colorAmber700: #b45309;
+  --colorAmber800: #92400e;
 }
 
 body {
@@ -16,13 +21,13 @@ body {
 }
 
 header {
-  background-color: var(--tempColor);
+  background: var(--colorAmber400);
   width: 100%;
   padding: 20px;
   text-align: center;
 }
 .words {
-  color: var(--tempColor);
+  color: var(--colorAmber700);
   font-size: 0;
   line-height: 1;
 }
@@ -173,7 +178,8 @@ footer  {
   align-items: center;
   gap: 10px;
   padding: 0;
-  background-color: var(--tempColor);
+  background: var(--colorAmber400);
+  color: var(--colorAmber800);
   height: 60px;
   width: 100%;
 }
