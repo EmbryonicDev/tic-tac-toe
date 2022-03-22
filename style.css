@@ -98,11 +98,14 @@ label {
 
 input {
   box-sizing: border-box;
-  background-color: var(--colorAmber100);
+  background: var(--colorAmber100);
   border-radius: 6px;
+  border: solid var(--colorAmber800);
+  padding: 2.5px;
 }
 
-input:hover {
+input:hover,
+input:focus {
 border: solid var(--colorAmber100);
 background: var(--colorAmber300);
 }
