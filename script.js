@@ -221,18 +221,18 @@ scoreBoards = () => {
   if (myVariables.pOneScore > myVariables.pTwoScore) {
     leader = myVariables.playerOne;
     pOneWinner.innerText = "Leader";
-    pOneBoard.style.cssText = "border: solid #78350f";
-    pTwoBoard.style.cssText -= "border: solid #78350f";
+    pOneBoard.style.cssText = "border: solid #78350f; box-shadow: 4px 4px 10px rgb(0, 0, 0, 0.5);";
+    pTwoBoard.style.cssText -= "border: solid #78350f; box-shadow: 4px 4px 10px rgb(0, 0, 0, 0.5);";
   } else if (myVariables.pTwoScore > myVariables.pOneScore) {
     leader = myVariables.playerTwo;
     pTwoWinner.innerText = "Leader";
-    pTwoBoard.style.cssText = "border: solid #78350f";
-    pOneBoard.style.cssText -= "border: solid #78350f";
+    pTwoBoard.style.cssText = "border: solid #78350f; box-shadow: 4px 4px 10px rgb(0, 0, 0, 0.5);";
+    pOneBoard.style.cssText -= "border: solid #78350f; box-shadow: 4px 4px 10px rgb(0, 0, 0, 0.5);";
   } else {
     pOneWinner.innerText = "";
     pTwoWinner.innerText = "";
-    pOneBoard.style.cssText -= "border: solid #78350f";
-    pTwoBoard.style.cssText -= "border: solid #78350f";
+    pOneBoard.style.cssText -= "border: solid #78350f; box-shadow: 4px 4px 10px rgb(0, 0, 0, 0.5);";
+    pTwoBoard.style.cssText -= "border: solid #78350f; box-shadow: 4px 4px 10px rgb(0, 0, 0, 0.5);";
   }
 
   // Show player info
