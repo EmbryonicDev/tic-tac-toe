@@ -1,12 +1,9 @@
 @import 'https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap';
 
 :root {
-  --tempColor: #94a3b8;
   --colorAmber100: #fef3c7;
   --colorAmber300: #fcd34d;
   --colorAmber400: #fbbf24;
-  --colorAmber500: #f59e0b;
-  --colorAmber600: #d97706;
   --colorAmber700: #b45309;
   --colorAmber800: #92400e;
   --colorAmber900: #78350f;
