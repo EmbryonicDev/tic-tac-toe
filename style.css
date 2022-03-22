@@ -22,7 +22,7 @@ body {
 }
 
 header {
-  background: var(--colorAmber400);
+  background: var(--colorAmber700);
   width: 100%;
   padding: 20px;
   text-align: center;
@@ -229,8 +229,8 @@ footer  {
   align-items: center;
   gap: 10px;
   padding: 0;
-  background: var(--colorAmber400);
-  color: var(--colorAmber800);
+  background: var(--colorAmber700);
+  color: var(--colorAmber400);
   height: 60px;
   width: 100%;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
