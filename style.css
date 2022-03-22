@@ -124,6 +124,8 @@ input {
   border-radius: 6px;
   border: solid var(--colorAmber900);
   padding: 2.5px;
+  font-family: serif;
+  font-weight: 600;
 }
 
 input:hover,
