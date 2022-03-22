@@ -27,6 +27,7 @@ header {
   width: 100%;
   padding: 20px;
   text-align: center;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.6);
 }
 .words {
   color: var(--colorAmber700);
@@ -184,6 +185,7 @@ footer  {
   color: var(--colorAmber800);
   height: 60px;
   width: 100%;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.6);
 }
 
 footer img  {
