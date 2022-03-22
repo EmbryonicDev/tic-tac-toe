@@ -221,18 +221,18 @@ scoreBoards = () => {
   if (myVariables.pOneScore > myVariables.pTwoScore) {
     leader = myVariables.playerOne;
     pOneWinner.innerText = "Leader";
-    pOneBoard.style.cssText = "border: solid black";
-    pTwoBoard.style.cssText -= "border: solid black";
+    pOneBoard.style.cssText = "border: solid #78350f";
+    pTwoBoard.style.cssText -= "border: solid #78350f";
   } else if (myVariables.pTwoScore > myVariables.pOneScore) {
     leader = myVariables.playerTwo;
     pTwoWinner.innerText = "Leader";
-    pTwoBoard.style.cssText = "border: solid black";
-    pOneBoard.style.cssText -= "border: solid black";
+    pTwoBoard.style.cssText = "border: solid #78350f";
+    pOneBoard.style.cssText -= "border: solid #78350f";
   } else {
     pOneWinner.innerText = "";
     pTwoWinner.innerText = "";
-    pOneBoard.style.cssText -= "border: solid black";
-    pTwoBoard.style.cssText -= "border: solid black";
+    pOneBoard.style.cssText -= "border: solid #78350f";
+    pTwoBoard.style.cssText -= "border: solid #78350f";
   }
 
   // Show player info
