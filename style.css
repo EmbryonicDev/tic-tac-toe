@@ -3,6 +3,7 @@
 :root {
   --tempColor: #94a3b8;
   --colorAmber100: #fef3c7;
+  --colorAmber300: #fcd34d;
   --colorAmber400: #fbbf24;
   --colorAmber500: #f59e0b;
   --colorAmber600: #d97706;
@@ -63,13 +64,20 @@ header {
 
 #form {
   position: absolute;
-  visibility: hidden;
   top: 15%;
-  border: solid black;
+  visibility: visible;
+  display: grid;
+  gap: 10px;
+  border: solid var(--colorAmber800);
   border-radius: 12px;
   padding: 10px;
-  background-color: white;
-  box-shadow: 4px 4px 4px rgb(0, 0, 0, 0.5);
+  background: var(--colorAmber600);
+  color: var(--colorAmber100);
+  box-shadow: 4px 4px 10px rgb(0, 0, 0, 0.5);
+}
+
+#form div:first-of-type {
+  justify-self: flex-end;
 }
 
 #formBtnWrap {
@@ -79,13 +87,24 @@ header {
 }
 
 #formBtnWrap button {
-  border-radius: 6px;
-  border: solid black;
+  background: var(--colorAmber100);
+  color: var(--colorAmber800);
 }
 
 label {
   font-weight: 500;
   margin-right: 5px;
+}
+
+input {
+  box-sizing: border-box;
+  background-color: var(--colorAmber100);
+  border-radius: 6px;
+}
+
+input:hover {
+border: solid var(--colorAmber100);
+background: var(--colorAmber300);
 }
 
 #mainWrap {
@@ -94,6 +113,10 @@ label {
   align-content: center;
   gap: 30px;
   margin: 15px 0;
+}
+
+button {
+  border-radius: 6px;
 }
 
 #btnWrap {
