@@ -2,6 +2,7 @@
 
 :root {
   --tempColor: #94a3b8;
+  --colorAmber100: #fef3c7;
   --colorAmber400: #fbbf24;
   --colorAmber500: #f59e0b;
   --colorAmber600: #d97706;
@@ -18,6 +19,7 @@ body {
   align-items: center;
   justify-content: space-between;
   font-family: 'Permanent Marker', cursive;
+  background: var(--colorAmber100);
 }
 
 header {
@@ -108,7 +110,7 @@ label {
 
 #playerOneWrap,
 #playerTwoWrap  {
-  width: 30%;
+  width: 35%;
   padding: 5px;
   border-radius: 8px;
 }
