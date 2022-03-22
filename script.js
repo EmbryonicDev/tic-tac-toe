@@ -253,7 +253,7 @@ scoreBoards = () => {
   // Show next player
   if (myVariables.nextToPlay == "O" && myVariables.tie == "") {
     winnerDisplay.innerText = "⭕ to play...";
-  } else if (myVariables.nextToPlay == "X" && myVariables.tie == "") {
+  } else if ((myVariables.nextToPlay == "X" && myVariables.tie == "") || myVariables.nextToPlay == '') {
     winnerDisplay.innerText = "❌ to play...";
   } else if (myVariables.tie == 'Yes') {
     winnerDisplay.innerText = "It's a tie 👔";
