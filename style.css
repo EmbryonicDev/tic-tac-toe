@@ -1,3 +1,5 @@
+@import 'https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap';
+
 :root {
   --tempColor: #94a3b8;
 }
@@ -15,8 +17,41 @@ body {
 header {
   background-color: var(--tempColor);
   width: 100%;
+  font-family: 'Permanent Marker', cursive;
+  padding: 20px;
   text-align: center;
 }
+.words {
+  color: var(--tempColor);
+  font-size: 0;
+  line-height: 1;
+}
+.words span {
+  font-size: 60px;
+  display: inline-block;
+  animation: move 2s ease-in-out infinite;
+}
+.words span:nth-child(2) {
+  animation-delay: 0.6s;
+}
+.words span:nth-child(3) {
+  animation-delay: 1.2s;
+}
+.words span:nth-child(4) {
+  animation-delay: 1.8s;
+}
+@keyframes move {
+  0% {
+    transform: translate(-33%, 0);
+ }
+  50% {
+    text-shadow: 0 15px 20px rgba(0, 0, 0, 0.6);
+ }
+  100% {
+    transform: translate(33%, 0);
+ }
+}
+/* ----------------------- */
 
 #form {
   position: absolute;
@@ -121,8 +156,8 @@ p {
 #gameboard > div:nth-child(6),
 #gameboard > div:nth-child(9) {
   border-right: 0;
-  border-top-right-radius: 12px;
-  border-bottom-right-radius: 12px;
+  border-top-r-radius: 12px;
+  border-bottom-r-radius: 12px;
 }
 
 #gameResult {
